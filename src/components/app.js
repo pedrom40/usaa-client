@@ -1,18 +1,21 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {Route, withRouter, Switch} from 'react-router-dom';
+import {Route, Switch} from 'react-router-dom';
 
 import Header from './header';
 import LoadingIndicator from './loading-indicator';
+import Error from './error';
 import Home from './home';
 import PaycheckPlanner from './paycheck-planner';
 import SavingsBooster from './savings-booster';
 import Footer from './footer';
 
-export class App extends React.Component {
+export default class App extends React.Component {
   render() {
 
     const styles = {
+      error: {
+        color: 'red'
+      },
       header: {
         h1: {
           position: 'absolute',
@@ -45,6 +48,7 @@ export class App extends React.Component {
         <Header cssStyles={styles.header} />
         <main style={styles.main}>
           <LoadingIndicator />
+          <Error cssStyles={styles.error} />
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/paycheck-planner" component={PaycheckPlanner} />
@@ -56,10 +60,3 @@ export class App extends React.Component {
     );
   }
 }
-
-const mapStateToProps = state => ({
-  // hasAuthToken: state.auth.authToken !== null,
-  // loggedIn: state.auth.currentUser !== null
-});
-
-export default withRouter(connect(mapStateToProps)(App));

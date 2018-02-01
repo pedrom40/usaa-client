@@ -1,10 +1,14 @@
-import {createStore, applyMiddleware, combineReducers} from 'redux';
-import {reducer as formReducer} from 'redux-form';
+import {createStore, combineReducers, applyMiddleware} from 'redux';
 import thunk from 'redux-thunk';
+import homeReducer from './reducers/home';
+import paycheckPlannerReducer from './reducers/paycheck-planner';
+import savingsBoosterReducer from './reducers/savings-booster';
 
 const store = createStore(
   combineReducers({
-    form: formReducer
+    homeReducer,
+    paycheckPlannerReducer,
+    savingsBoosterReducer
   }),
   applyMiddleware(thunk)
 );
