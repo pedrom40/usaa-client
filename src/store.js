@@ -1,8 +1,8 @@
 import {createStore, combineReducers, applyMiddleware} from 'redux';
 import thunk from 'redux-thunk';
-import homeReducer from './reducers/home';
-import paycheckPlannerReducer from './reducers/paycheck-planner';
-import savingsBoosterReducer from './reducers/savings-booster';
+import homeReducer from './Home/reducers/';
+import paycheckPlannerReducer from './PaycheckPlanner/reducers/';
+import savingsBoosterReducer from './SavingsBooster/reducers/';
 
 const store = createStore(
   combineReducers({

@@ -3,10 +3,13 @@ import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
 
 export function Error(props) {
+
+  const error = props.homeError || props.paycheckPlannerError || props.savingsBoosterError;
+
   if (props.homeError || props.paycheckPlannerError || props.savingsBoosterError) {
     return (
       <h4 style={props.cssStyles}>
-        {props.error}
+        {error}
       </h4>
     );
   }

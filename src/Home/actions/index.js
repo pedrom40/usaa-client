@@ -1,4 +1,4 @@
-import {getHomeContent} from '../services';
+import {API_BASE_URL} from "../../config";
 
 export const FETCH_HOME_CONTENT_REQUEST = 'FETCH_HOME_CONTENT_REQUEST';
 export const fetchHomeContentRequest = () => ({
@@ -19,8 +19,20 @@ export const fetchHomeContentError = error => ({
 
 // fetch home content call
 export const fetchHomeContent = () => dispatch => {
+
+  // announce the call has been queued
   dispatch(fetchHomeContentRequest());
-  getHomeContent()
-    .then( res => dispatch(fetchHomeContentSuccess(res)))
-    .catch( error => dispatch(fetchHomeContentError(error)));
+
+  // make the call
+  fetch(`${API_BASE_URL}/home`)
+    .then(res => {
+      if (!res.ok) {
+        return Promise.reject(dispatch(fetchHomeContentError(res.statusText)));
+      }
+      return res.json();
+    })
+    .then(res => {
+      dispatch(fetchHomeContentSuccess(res.content));
+    });
+
 };

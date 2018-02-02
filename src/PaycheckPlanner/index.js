@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {fetchPaycheckPlannerContent} from "../actions/paycheck-planner";
+import {fetchPaycheckPlannerContent} from "./actions/index";
 
 export class PaycheckPlanner extends React.Component {
   componentDidMount(){

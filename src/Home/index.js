@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {fetchHomeContent} from "../actions/home";
+import {fetchHomeContent} from "./actions/";
 
 export class Home extends React.Component {
   componentDidMount(){

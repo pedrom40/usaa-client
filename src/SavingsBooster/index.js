@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {fetchSavingsBoosterContent} from "../actions/savings-booster";
+import {fetchSavingsBoosterContent} from "./actions/";
 
 export class SavingsBooster extends React.Component {
   componentDidMount(){

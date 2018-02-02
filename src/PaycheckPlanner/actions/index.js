@@ -1,4 +1,4 @@
-import {getPaycheckPlannerContent} from '../services';
+import {API_BASE_URL} from "../../config";
 
 export const FETCH_PAYCHECK_PLANNER_CONTENT_REQUEST = 'FETCH_PAYCHECK_PLANNER_CONTENT_REQUEST';
 export const fetchPaycheckPlannerContentRequest = () => ({
@@ -19,8 +19,20 @@ export const fetchPaycheckPlannerContentError = error => ({
 
 // fetch Paycheck Planner content call
 export const fetchPaycheckPlannerContent = () => dispatch => {
+
+  // announce that the call has been queued
   dispatch(fetchPaycheckPlannerContentRequest());
-  getPaycheckPlannerContent()
-    .then( res => dispatch(fetchPaycheckPlannerContentSuccess(res)))
-    .catch( error => dispatch(fetchPaycheckPlannerContentError(error)));
+
+  // make the call
+  fetch(`${API_BASE_URL}/paycheck-planner`)
+    .then(res => {
+      if (!res.ok) {
+        return Promise.reject(dispatch(fetchPaycheckPlannerContentError(res.statusText)));
+      }
+      return res.json();
+    })
+    .then(res => {
+      dispatch(fetchPaycheckPlannerContentSuccess(res.content));
+    });
+
 };

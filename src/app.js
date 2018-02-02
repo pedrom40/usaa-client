@@ -1,13 +1,18 @@
 import React from 'react';
 import {Route, Switch} from 'react-router-dom';
 
-import Header from './header';
-import LoadingIndicator from './loading-indicator';
-import Error from './error';
-import Home from './home';
-import PaycheckPlanner from './paycheck-planner';
-import SavingsBooster from './savings-booster';
-import Footer from './footer';
+// layout
+import Header from './_shared/header';
+import Footer from './_shared/footer';
+
+// utilities
+import LoadingIndicator from './_shared/loading-indicator';
+import Error from './_shared/error';
+
+// main apps
+import Home from './Home/index';
+import PaycheckPlanner from './PaycheckPlanner/index';
+import SavingsBooster from './SavingsBooster/index';
 
 export default class App extends React.Component {
   render() {

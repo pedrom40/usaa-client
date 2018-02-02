@@ -1,4 +1,4 @@
-import * as actions from '../actions/savings-booster';
+import * as actions from '../actions/';
 
 const initialState = {
   error: null,
@@ -8,15 +8,16 @@ const initialState = {
 
 export default (state = initialState, action) => {
 
-  if (action.type === actions.FETCH_SAVINGS_BOOSTER_CONTENT_REQUEST) {
+  if (action.type === actions.FETCH_HOME_CONTENT_REQUEST) {
     return Object.assign({}, state, {
       ...state,
+      error: null,
       showLoader: true,
-      error: null
+      content: ''
     })
   }
 
-  else if (action.type === actions.FETCH_SAVINGS_BOOSTER_CONTENT_SUCCESS) {
+  else if (action.type === actions.FETCH_HOME_CONTENT_SUCCESS) {
     return Object.assign({}, state, {
       ...state,
       error: null,
@@ -25,7 +26,7 @@ export default (state = initialState, action) => {
     });
   }
 
-  else if (action.type === actions.FETCH_SAVINGS_BOOSTER_CONTENT_ERROR) {
+  else if (action.type === actions.FETCH_HOME_CONTENT_ERROR) {
     return Object.assign({}, state, {
       ...state,
       error: action.error,
@@ -35,4 +36,5 @@ export default (state = initialState, action) => {
   }
 
   return state;
+
 };

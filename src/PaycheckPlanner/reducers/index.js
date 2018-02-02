@@ -1,4 +1,4 @@
-import * as actions from '../actions/paycheck-planner';
+import * as actions from '../actions/';
 
 const initialState = {
   error: null,
@@ -11,8 +11,9 @@ export default (state = initialState, action) => {
   if (action.type === actions.FETCH_PAYCHECK_PLANNER_CONTENT_REQUEST) {
     return Object.assign({}, state, {
       ...state,
+      error: null,
       showLoader: true,
-      error: null
+      content: ''
     })
   }
 

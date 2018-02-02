@@ -1,4 +1,4 @@
-import {getSavingsBoosterContent} from '../services';
+import {API_BASE_URL} from "../../config";
 
 export const FETCH_SAVINGS_BOOSTER_CONTENT_REQUEST = 'FETCH_SAVINGS_BOOSTER_CONTENT_REQUEST';
 export const fetchSavingsBoosterContentRequest = () => ({
@@ -19,8 +19,20 @@ export const fetchSavingsBoosterContentError = error => ({
 
 // fetch home content call
 export const fetchSavingsBoosterContent = () => dispatch => {
+
+  // announce that the call has been queued
   dispatch(fetchSavingsBoosterContentRequest());
-  getSavingsBoosterContent()
-    .then( res => dispatch(fetchSavingsBoosterContentSuccess(res)))
-    .catch( error => dispatch(fetchSavingsBoosterContentError(error)));
+
+  // make the call
+  fetch(`${API_BASE_URL}/paycheck-planner`)
+    .then(res => {
+      if (!res.ok) {
+        return Promise.reject(dispatch(fetchSavingsBoosterContentError(res.statusText)));
+      }
+      return res.json();
+    })
+    .then(res => {
+      dispatch(fetchSavingsBoosterContentSuccess(res.content));
+    });
+
 };
