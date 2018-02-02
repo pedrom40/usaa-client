@@ -13,12 +13,20 @@ export class PaycheckPlanner extends React.Component {
     this.props.dispatch(fetchPaycheckPlannerNotices());
   };
 
+  handleButton1Click() {
+    console.log('PP Button 1 clicked');
+  }
+
+  handleButton2Click() {
+    console.log('PP Button 2 clicked');
+  }
+
   render () {
     return (
       <section>
         <h2>Paycheck Planner</h2>
         <p>{this.props.content}</p>
-        <Carousel cards={this.props.notices}  />
+        <Carousel cards={this.props.notices} onButton1Click={this.handleButton1Click} onButton2Click={this.handleButton2Click} />
       </section>
     );
   }

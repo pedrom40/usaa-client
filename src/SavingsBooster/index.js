@@ -13,12 +13,20 @@ export class SavingsBooster extends React.Component {
     this.props.dispatch(fetchSavingsBoosterMessages());
   };
 
+  handleButton1Click() {
+    console.log('SB Button 1 clicked');
+  }
+
+  handleButton2Click() {
+    console.log('SB Button 2 clicked');
+  }
+
   render () {
     return (
       <section>
         <h2>Savings Booster</h2>
         <p>{this.props.content}</p>
-        <Carousel cards={this.props.messages}  />
+        <Carousel cards={this.props.messages} onButton1Click={this.handleButton1Click} onButton2Click={this.handleButton2Click}  />
       </section>
     );
   }
