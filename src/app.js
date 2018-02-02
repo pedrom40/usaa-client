@@ -45,6 +45,9 @@ export default class App extends React.Component {
         position: 'absolute',
         width: '100%',
         bottom: 15
+      },
+      carousel: {
+
       }
     };
 

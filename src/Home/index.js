@@ -3,11 +3,10 @@ import {connect} from 'react-redux';
 import {fetchHomeContent} from "./actions/";
 
 export class Home extends React.Component {
+
+  // get content
   componentDidMount(){
-
-    // get home content
     this.props.dispatch(fetchHomeContent());
-
   };
 
   render () {
