@@ -8,8 +8,8 @@ export function Carousel(props) {
       <p>{card.description}</p>
       <div>
         <div>
-          <button onClick={e => props.onButton1Click(e)}>{card.button1}</button>
-          <button onClick={e => props.onButton2Click(e)}>{card.button2}</button>
+          <button id={`btn1_${card.id}_${card.onConfirm}`} onClick={e => props.onButton1Click(e)}>{card.button1}</button>
+          <button id={`btn2_${card.id}_${card.onCancel}`} onClick={e => props.onButton2Click(e)}>{card.button2}</button>
         </div>
       </div>
     </div>

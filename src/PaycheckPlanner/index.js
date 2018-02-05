@@ -13,12 +13,43 @@ export class PaycheckPlanner extends React.Component {
     this.props.dispatch(fetchPaycheckPlannerNotices());
   };
 
-  handleButton1Click() {
-    console.log('PP Button 1 clicked');
+  handleButton1Click(e) {
+
+    // split info to get ID and next step
+    const objInfo = e.target.id.split('_');
+
+    // if view event
+    if (objInfo[2] === 'View') {
+      console.log(`Open Event ${objInfo[1]} Modal`);
+    }
+
+    // if adding new event
+    else if (objInfo[2] === 'AddEvent') {
+      console.log(`Add New Event Based on Transaction ${objInfo[1]}`);
+    }
+
+    // if contacting staff
+    else if (objInfo[2] === 'OpenEmail') {
+      console.log(`Open Email About Event ${objInfo[1]}`);
+    }
+
   }
 
-  handleButton2Click() {
-    console.log('PP Button 2 clicked');
+  handleButton2Click(e) {
+
+    // split info to get ID and next step
+    const objInfo = e.target.id.split('_');
+
+    // if closing item
+    if (objInfo[2] === 'Close') {
+      console.log(`Dismiss Notification for Event ${objInfo[1]}`);
+    }
+
+    // if closing item
+    else if (objInfo[2] === 'Dashboard') {
+      console.log(`Dismiss Notification ${objInfo[1]} and go to Dashboard`);
+    }
+
   }
 
   render () {

@@ -13,12 +13,43 @@ export class SavingsBooster extends React.Component {
     this.props.dispatch(fetchSavingsBoosterMessages());
   };
 
-  handleButton1Click() {
-    console.log('SB Button 1 clicked');
+  handleButton1Click(e) {
+
+    // split info to get ID and next step
+    const objInfo = e.target.id.split('_');
+
+    // if view event
+    if (objInfo[2] === 'Clear') {
+      console.log(`Dismiss Message ${objInfo[1]}`);
+    }
+
+    // if adding new event
+    else if (objInfo[2] === 'Activate') {
+      console.log(`Activate Service ${objInfo[1]}`);
+    }
+
+    // if contacting staff
+    else if (objInfo[2] === 'Contact') {
+      console.log(`Open Email About Service ${objInfo[1]}`);
+    }
+
   }
 
-  handleButton2Click() {
-    console.log('SB Button 2 clicked');
+  handleButton2Click(e) {
+
+    // split info to get ID and next step
+    const objInfo = e.target.id.split('_');
+
+    // if closing item
+    if (objInfo[2] === 'Dismiss') {
+      console.log(`Dismiss Message ${objInfo[1]} and don't watch`);
+    }
+
+    // if closing item
+    else if (objInfo[2] === 'Close') {
+      console.log(`Close Service ${objInfo[1]} and go to Dashboard`);
+    }
+
   }
 
   render () {
